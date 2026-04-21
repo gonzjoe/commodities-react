@@ -1340,6 +1340,203 @@ const App = () => {
     );
   };
 
+  // ============================================
+  // PÁGINA: COMPRA DE PLATA
+  // ============================================
+  const SilverPage = () => (
+    <div className="animate-fadeIn">
+      <section className="relative pt-32 pb-20 bg-[#0A1628] overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-slate-400/10 to-transparent"></div>
+        <div className="max-w-7xl mx-auto px-4 relative z-10 text-center">
+          <div className="inline-block mb-4 px-3 py-1 bg-slate-500/20 border border-slate-400/30 rounded-full">
+            <span className="text-slate-300 text-xs font-bold uppercase tracking-widest">Metales Industriales</span>
+          </div>
+          <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">Compra de <span className="text-slate-300">Plata</span></h1>
+          <p className="text-lg text-slate-300 max-w-3xl mx-auto mb-8">Adquisición a gran escala de plata en lingotes, granallas y material de mina. Evaluación profesional con estándares internacionales.</p>
+          <button onClick={() => navigateTo('contacto')} className="bg-slate-300 text-[#0A1628] px-8 py-4 rounded-full font-bold hover:bg-white transition-all">Consultar Cotización Plata</button>
+        </div>
+      </section>
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <div>
+              <h2 className="text-3xl font-bold text-[#0A1628] mb-6">Expertos en Refinación de Plata</h2>
+              <p className="text-slate-600 mb-6 leading-relaxed">Contamos con laboratorios especializados para la determinación de pureza en plata fina (999) y plata de ley (925). Operamos en toda Latinoamérica con logística propia.</p>
+              <ul className="space-y-3">
+                {['Pago basado en precio Spot de Nueva York/Londres', 'Análisis por espectrometría', 'Logística de transporte blindado', 'Contratos de suministro a largo plazo'].map((item, i) => (
+                  <li key={i} className="flex items-center text-slate-700">
+                    <CheckCircle className="w-5 h-5 text-slate-400 mr-3" /> {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <img src="https://images.unsplash.com/photo-1573164713714-d95e436ab8d6?w=800&h=600&fit=crop" className="rounded-3xl shadow-xl" alt="Silver Bars" />
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+
+  // ============================================
+  // PÁGINA: VENTA DE UREA
+  // ============================================
+  const UreaPage = () => (
+    <div className="animate-fadeIn">
+      <section className="relative pt-32 pb-20 bg-[#0A1628] overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-blue-900/20 to-transparent"></div>
+        <div className="max-w-7xl mx-auto px-4 relative z-10 text-center">
+          <div className="inline-block mb-4 px-3 py-1 bg-blue-500/20 border border-blue-400/30 rounded-full">
+            <span className="text-blue-400 text-xs font-bold uppercase tracking-widest">Suministro Agrícola</span>
+          </div>
+          <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">Venta de <span className="text-blue-400">Urea 46%</span></h1>
+          <p className="text-lg text-slate-300 max-w-3xl mx-auto mb-8">Proveedor global de urea de alta calidad para fertilización agrícola e industria química. Despachos masivos a Europa y América.</p>
+          <button onClick={() => navigateTo('contacto')} className="bg-blue-600 text-white px-8 py-4 rounded-full font-bold hover:bg-blue-700 transition-all">Consultar Logística Urea</button>
+        </div>
+      </section>
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <img src="https://images.unsplash.com/photo-1586771107445-d3ca888129ff?w=800&h=600&fit=crop" className="rounded-3xl shadow-xl" alt="Urea Granules" />
+            <div>
+              <h2 className="text-3xl font-bold text-[#0A1628] mb-6">Capacidad de Suministro Industrial</h2>
+              <p className="text-slate-600 mb-6 leading-relaxed">Suministramos Urea Prilled y Granular 46% N con certificaciones SGS de origen. Gestionamos fletes marítimos y entrega en puerto destino (CIF).</p>
+              <div className="bg-blue-50 p-6 rounded-2xl border border-blue-100">
+                <h4 className="font-bold text-blue-900 mb-4 text-center uppercase tracking-wider text-sm">Especificaciones Estándar</h4>
+                <div className="grid grid-cols-2 gap-4">
+                  <div className="bg-white p-3 rounded-lg text-center"><p className="text-xs text-slate-500">Nitrógeno</p><p className="font-bold text-blue-600">Min. 46%</p></div>
+                  <div className="bg-white p-3 rounded-lg text-center"><p className="text-xs text-slate-500">Biuret</p><p className="font-bold text-blue-600">Max. 1%</p></div>
+                  <div className="bg-white p-3 rounded-lg text-center"><p className="text-xs text-slate-500">Humedad</p><p className="font-bold text-blue-600">Max. 0.5%</p></div>
+                  <div className="bg-white p-3 rounded-lg text-center"><p className="text-xs text-slate-500">Origen</p><p className="font-bold text-blue-600">Global</p></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+
+  // ============================================
+  // PÁGINA: VENTA DE AZÚCAR
+  // ============================================
+  const SugarPage = () => (
+    <div className="animate-fadeIn">
+      <section className="relative pt-32 pb-20 bg-[#0A1628] overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-amber-900/20 to-transparent"></div>
+        <div className="max-w-7xl mx-auto px-4 relative z-10 text-center">
+          <div className="inline-block mb-4 px-3 py-1 bg-amber-500/20 border border-amber-400/30 rounded-full">
+            <span className="text-amber-400 text-xs font-bold uppercase tracking-widest">Soft Commodities</span>
+          </div>
+          <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">Azúcar <span className="text-amber-400">ICUMSA 45</span></h1>
+          <p className="text-lg text-slate-300 max-w-3xl mx-auto mb-8">Exportación directa de azúcar refinada de origen brasileño y mexicano. Calidad garantizada bajo normas internacionales de consumo.</p>
+          <button onClick={() => navigateTo('contacto')} className="bg-amber-500 text-[#0A1628] px-8 py-4 rounded-full font-bold hover:bg-amber-600 transition-all">Solicitar Cotización Azúcar</button>
+        </div>
+      </section>
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+            {[
+              { title: 'Certificación SGS', desc: 'Control de calidad en puerto de carga.', icon: <Award className="w-10 h-10 mx-auto text-amber-500" /> },
+              { title: 'Logística Global', desc: 'Despachos a Europa, México y Medio Oriente.', icon: <Globe className="w-10 h-10 mx-auto text-amber-500" /> },
+              { title: 'Suministro Continuo', desc: 'Capacidad de entrega mensual de gran volumen.', icon: <Clock className="w-10 h-10 mx-auto text-amber-500" /> }
+            ].map((item, i) => (
+              <div key={i} className="p-8 border border-slate-100 rounded-3xl hover:shadow-lg transition-all">
+                <div className="mb-4">{item.icon}</div>
+                <h3 className="font-bold text-lg mb-2">{item.title}</h3>
+                <p className="text-sm text-slate-600">{item.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+
+  // --- Sub-componente Header con Dropdown ---
+  const Header = () => {
+    const [dropdownOpen, setDropdownOpen] = useState(false);
+    const services = [
+      { id: 'gold', title: 'Compra de Oro' },
+      { id: 'silver', title: 'Compra de Plata' },
+      { id: 'urea', title: 'Venta de Urea' },
+      { id: 'sugar', title: 'Venta de Azúcar' }
+    ];
+
+    return (
+      <header className="fixed top-0 w-full z-50 bg-white/95 backdrop-blur-md shadow-lg border-b border-[#D4AF37]/30">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex justify-between items-center h-20">
+            <div className="flex items-center cursor-pointer" onClick={() => navigateTo('inicio')}>
+              <div className="w-10 h-10 bg-[#0A1628] rounded-lg flex items-center justify-center mr-3 border border-[#D4AF37]">
+                <Globe className="w-6 h-6 text-[#D4AF37]" />
+              </div>
+              <div>
+                <h1 className="text-xl font-bold text-[#0A1628] tracking-tight" style={{fontFamily: 'Inter, sans-serif'}}>
+                  GLOBAL<span className="text-[#D4AF37]">COMMODITIES</span>
+                </h1>
+                <p className="text-[10px] text-slate-500 uppercase tracking-widest">Excelencia en Trading • 20 Años</p>
+              </div>
+            </div>
+
+            <nav className="hidden md:flex items-center space-x-6">
+              <button onClick={() => navigateTo('inicio')} className={`text-sm font-semibold transition-colors ${currentPage === 'inicio' ? 'text-[#D4AF37]' : 'text-[#0A1628] hover:text-[#D4AF37]'}`}>Inicio</button>
+              
+              <div className="relative group" onMouseEnter={() => setDropdownOpen(true)} onMouseLeave={() => setDropdownOpen(false)}>
+                <button 
+                  onClick={() => navigateTo('servicios')}
+                  className={`flex items-center text-sm font-semibold transition-colors ${currentPage === 'servicios' || services.some(s => s.id === currentPage) ? 'text-[#D4AF37]' : 'text-[#0A1628] hover:text-[#D4AF37]'}`}
+                >
+                  Servicios <ChevronDown className={`w-4 h-4 ml-1 transition-transform ${dropdownOpen ? 'rotate-180' : ''}`} />
+                </button>
+                {dropdownOpen && (
+                  <div className="absolute top-full left-0 w-56 bg-white shadow-2xl rounded-xl py-2 mt-0 border border-slate-100 animate-fadeIn">
+                    {services.map(s => (
+                      <button 
+                        key={s.id} 
+                        onClick={() => navigateTo(s.id)}
+                        className="block w-full text-left px-5 py-3 text-sm text-slate-700 hover:bg-slate-50 hover:text-[#D4AF37] font-medium transition-colors"
+                      >
+                        {s.title}
+                      </button>
+                    ))}
+                    <div className="border-t border-slate-100 my-1"></div>
+                    <button onClick={() => navigateTo('servicios')} className="block w-full text-left px-5 py-3 text-sm text-[#0A1628] font-bold hover:bg-slate-50">Todos los Servicios</button>
+                  </div>
+                )}
+              </div>
+
+              <button onClick={() => navigateTo('nosotros')} className={`text-sm font-semibold transition-colors ${currentPage === 'nosotros' ? 'text-[#D4AF37]' : 'text-[#0A1628] hover:text-[#D4AF37]'}`}>Nosotros</button>
+              <button onClick={() => navigateTo('contacto')} className={`text-sm font-semibold transition-colors ${currentPage === 'contacto' ? 'text-[#D4AF37]' : 'text-[#0A1628] hover:text-[#D4AF37]'}`}>Contacto</button>
+            </nav>
+
+            <button onClick={() => navigateTo('contacto')} className="hidden md:block bg-[#D4AF37] text-[#0A1628] px-6 py-2.5 rounded-full font-bold text-sm hover:shadow-xl hover:scale-105 transition-all">
+              Cotización Gratis
+            </button>
+
+            <button className="md:hidden" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
+              {mobileMenuOpen ? <X /> : <Menu />}
+            </button>
+          </div>
+        </div>
+
+        {/* Mobile Menu */}
+        {mobileMenuOpen && (
+          <div className="md:hidden bg-white border-t border-slate-100 p-4 space-y-2 animate-fadeIn">
+            {['Inicio', 'Nosotros', 'Contacto'].map(item => (
+              <button key={item} onClick={() => navigateTo(item.toLowerCase() === 'nosotros' ? 'nosotros' : item.toLowerCase())} className="block w-full text-left p-3 text-slate-700 font-semibold">{item}</button>
+            ))}
+            <div className="p-3 border-t border-slate-100 mt-2">
+              <p className="text-xs font-bold text-slate-400 mb-2 uppercase">Servicios Individuales</p>
+              {services.map(s => (
+                <button key={s.id} onClick={() => navigateTo(s.id)} className="block w-full text-left py-2 text-[#0A1628] font-bold">{s.title}</button>
+              ))}
+            </div>
+          </div>
+        )}
+      </header>
+    );
+  };
+
   // Render Principal
   return (
     <div className="min-h-screen bg-slate-50" style={{fontFamily: "'Open Sans', sans-serif"}}>
@@ -1361,11 +1558,11 @@ const App = () => {
         .border-brand-gold { border-color: var(--brand-gold); }
 
         .animate-fadeIn {
-          animation: fadeIn 0.5s ease-in;
+          animation: fadeIn 0.4s ease-out;
         }
 
         @keyframes fadeIn {
-          from { opacity: 0; transform: translateY(10px); }
+          from { opacity: 0; transform: translateY(8px); }
           to { opacity: 1; transform: translateY(0); }
         }
       `}</style>
@@ -1379,6 +1576,9 @@ const App = () => {
         {currentPage === 'faq' && <FAQPage />}
         {currentPage === 'contacto' && <ContactPage />}
         {currentPage === 'gold' && <GoldPage />}
+        {currentPage === 'silver' && <SilverPage />}
+        {currentPage === 'urea' && <UreaPage />}
+        {currentPage === 'sugar' && <SugarPage />}
       </main>
 
       <Footer />
