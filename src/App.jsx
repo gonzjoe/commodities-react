@@ -16,16 +16,16 @@ const App = () => {
     window.scrollTo(0, 0);
   };
 
-  // Paleta de colores Premium
+  // Paleta de colores Premium (Super Prompt Edition)
   const colors = {
-    gold: '#D4AF37',
-    goldLight: '#E8C547',
-    navy: '#0A1628',
+    gold: '#D4AF37', // Dorado Metálico
+    goldLight: '#F3CF55',
+    navy: '#0A1628', // Azul Marino Profundo
     navyLight: '#1E3A5F',
     white: '#FFFFFF',
-    gray: '#F5F5F5',
-    textDark: '#1A1A1A',
-    textGray: '#6B7280'
+    gray: '#F8FAFC',
+    textDark: '#0F172A',
+    textGray: '#64748B'
   };
 
   // Componente Header
@@ -1342,10 +1342,23 @@ const App = () => {
 
   // Render Principal
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-slate-50" style={{fontFamily: "'Open Sans', sans-serif"}}>
       {/* Google Fonts */}
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Open+Sans:wght@400;500;600&display=swap');
+
+        :root {
+          --brand-gold: #D4AF37;
+          --brand-navy: #0A1628;
+        }
+
+        h1, h2, h3, h4, .font-title {
+          font-family: 'Inter', sans-serif !important;
+        }
+
+        .bg-brand-navy { background-color: var(--brand-navy); }
+        .text-brand-gold { color: var(--brand-gold); }
+        .border-brand-gold { border-color: var(--brand-gold); }
 
         .animate-fadeIn {
           animation: fadeIn 0.5s ease-in;
