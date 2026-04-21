@@ -28,94 +28,7 @@ const App = () => {
     textGray: '#64748B'
   };
 
-  // Componente Header
-  const Header = () => (
-    <header className="fixed top-0 w-full z-50 bg-white/95 backdrop-blur-md shadow-lg border-b border-amber-200">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-20">
-          {/* Logo */}
-          <div
-            className="flex items-center cursor-pointer"
-            onClick={() => navigateTo('inicio')}
-          >
-            <div className="w-10 h-10 bg-gradient-to-br from-amber-400 to-amber-600 rounded-lg flex items-center justify-center mr-3">
-              <Globe className="w-6 h-6 text-white" />
-            </div>
-            <div>
-              <h1 className="text-xl font-bold text-slate-900 tracking-tight" style={{fontFamily: 'Inter, sans-serif'}}>
-                GLOBAL<span className="text-amber-600">COMMODITIES</span>
-              </h1>
-              <p className="text-xs text-slate-500">Trading Internacional desde 2010</p>
-            </div>
-          </div>
 
-          {/* Desktop Navigation */}
-          <nav className="hidden md:flex space-x-8">
-            {['Inicio', 'Servicios', 'Oro', 'Nosotros', 'Contacto'].map((item) => {
-              const pageKey = item.toLowerCase();
-              const isActive = currentPage === pageKey || (item === 'Nosotros' && currentPage === 'nosotros');
-              return (
-                <button
-                  key={item}
-                  onClick={() => navigateTo(pageKey === 'nosotros' ? 'nosotros' : pageKey)}
-                  className={`text-sm font-medium transition-colors duration-200 ${
-                    isActive
-                      ? 'text-amber-600 border-b-2 border-amber-600'
-                      : 'text-slate-700 hover:text-amber-600'
-                  }`}
-                  style={{fontFamily: 'Inter, sans-serif'}}
-                >
-                  {item}
-                </button>
-              );
-            })}
-          </nav>
-
-          {/* CTA Button Desktop */}
-          <div className="hidden md:block">
-            <button
-              onClick={() => navigateTo('contacto')}
-              className="bg-gradient-to-r from-amber-500 to-amber-600 text-white px-6 py-2.5 rounded-full font-semibold text-sm hover:shadow-lg hover:scale-105 transition-all duration-300"
-              style={{fontFamily: 'Inter, sans-serif'}}
-            >
-              Cotización Gratis
-            </button>
-          </div>
-
-          {/* Mobile Menu Button */}
-          <button
-            className="md:hidden p-2"
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          >
-            {mobileMenuOpen ? <X className="w-6 h-6 text-slate-700" /> : <Menu className="w-6 h-6 text-slate-700" />}
-          </button>
-        </div>
-      </div>
-
-      {/* Mobile Menu */}
-      {mobileMenuOpen && (
-        <div className="md:hidden bg-white border-t border-gray-100">
-          <div className="px-4 pt-2 pb-6 space-y-2">
-            {['Inicio', 'Servicios', 'Oro', 'Nosotros', 'Contacto'].map((item) => (
-              <button
-                key={item}
-                onClick={() => navigateTo(item.toLowerCase() === 'nosotros' ? 'nosotros' : item.toLowerCase())}
-                className="block w-full text-left px-3 py-3 text-base font-medium text-slate-700 hover:text-amber-600 hover:bg-amber-50 rounded-lg"
-              >
-                {item}
-              </button>
-            ))}
-            <button
-              onClick={() => navigateTo('contacto')}
-              className="w-full mt-4 bg-gradient-to-r from-amber-500 to-amber-600 text-white px-6 py-3 rounded-full font-semibold"
-            >
-              Solicitar Cotización
-            </button>
-          </div>
-        </div>
-      )}
-    </header>
-  );
 
   // Componente Footer
   const Footer = () => (
@@ -1341,116 +1254,239 @@ const App = () => {
   };
 
   // ============================================
-  // PÁGINA: COMPRA DE PLATA
+  // PÁGINA: COMPRA DE ORO (MEJORADA)
   // ============================================
-  const SilverPage = () => (
-    <div className="animate-fadeIn">
-      <section className="relative pt-32 pb-20 bg-[#0A1628] overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-slate-400/10 to-transparent"></div>
-        <div className="max-w-7xl mx-auto px-4 relative z-10 text-center">
-          <div className="inline-block mb-4 px-3 py-1 bg-slate-500/20 border border-slate-400/30 rounded-full">
-            <span className="text-slate-300 text-xs font-bold uppercase tracking-widest">Metales Industriales</span>
-          </div>
-          <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">Compra de <span className="text-slate-300">Plata</span></h1>
-          <p className="text-lg text-slate-300 max-w-3xl mx-auto mb-8">Adquisición a gran escala de plata en lingotes, granallas y material de mina. Evaluación profesional con estándares internacionales.</p>
-          <button onClick={() => navigateTo('contacto')} className="bg-slate-300 text-[#0A1628] px-8 py-4 rounded-full font-bold hover:bg-white transition-all">Consultar Cotización Plata</button>
-        </div>
-      </section>
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-            <div>
-              <h2 className="text-3xl font-bold text-[#0A1628] mb-6">Expertos en Refinación de Plata</h2>
-              <p className="text-slate-600 mb-6 leading-relaxed">Contamos con laboratorios especializados para la determinación de pureza en plata fina (999) y plata de ley (925). Operamos en toda Latinoamérica con logística propia.</p>
-              <ul className="space-y-3">
-                {['Pago basado en precio Spot de Nueva York/Londres', 'Análisis por espectrometría', 'Logística de transporte blindado', 'Contratos de suministro a largo plazo'].map((item, i) => (
-                  <li key={i} className="flex items-center text-slate-700">
-                    <CheckCircle className="w-5 h-5 text-slate-400 mr-3" /> {item}
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <img src="https://images.unsplash.com/photo-1573164713714-d95e436ab8d6?w=800&h=600&fit=crop" className="rounded-3xl shadow-xl" alt="Silver Bars" />
-          </div>
-        </div>
-      </section>
-    </div>
-  );
+  const GoldPage = () => {
+    const [openFaq, setOpenFaq] = useState(null);
+    const faqs = [
+      { q: "¿Cómo verifican la **pureza del oro**?", a: "Utilizamos métodos de **espectrometría XRF** y ensayos de fuego en laboratorios certificados para garantizar una **precisión del 99.9%**." },
+      { q: "¿Cuál es el **volumen mínimo** de compra?", a: "Operamos desde **1 kilogramo** hasta contratos mensuales de **500 kg** o más, adaptándonos a pequeños productores y grandes mineras." },
+      { q: "¿Cómo se realiza el **pago final**?", a: "El pago se efectúa mediante **transferencia bancaria inmediata** (SWIFT) una vez verificada la ley del metal en fundición autorizada." },
+      { q: "¿Cumplen con protocolos de **minería responsable**?", a: "Sí, aplicamos estrictamente la guía de la **OCDE** y estándares **LBMA** para asegurar que el oro provenga de fuentes legales y éticas." },
+      { q: "¿Qué documentos necesito para vender?", a: "Se requiere **Factura comercial**, guía de remisión, **permisos de explotación** vigentes y documentos de identidad del titular." }
+    ];
 
-  // ============================================
-  // PÁGINA: VENTA DE UREA
-  // ============================================
-  const UreaPage = () => (
-    <div className="animate-fadeIn">
-      <section className="relative pt-32 pb-20 bg-[#0A1628] overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-blue-900/20 to-transparent"></div>
-        <div className="max-w-7xl mx-auto px-4 relative z-10 text-center">
-          <div className="inline-block mb-4 px-3 py-1 bg-blue-500/20 border border-blue-400/30 rounded-full">
-            <span className="text-blue-400 text-xs font-bold uppercase tracking-widest">Suministro Agrícola</span>
+    return (
+      <div className="animate-fadeIn">
+        {/* Hero Section */}
+        <section className="relative pt-32 pb-20 bg-[#0A1628] overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-to-br from-amber-500/10 to-transparent"></div>
+          <div className="max-w-7xl mx-auto px-4 relative z-10 text-center">
+            <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">Compra de <span className="text-[#D4AF37]">Oro de Mina</span></h1>
+            <p className="text-lg text-slate-300 max-w-3xl mx-auto mb-8">Especialistas en la adquisición de **Oro Doré**, barras y concentrados con logística segura en **Latinoamérica**.</p>
+            <button onClick={() => navigateTo('contacto')} className="bg-[#D4AF37] text-[#0A1628] px-8 py-4 rounded-full font-bold hover:scale-105 transition-all">Iniciar Evaluación de Material</button>
           </div>
-          <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">Venta de <span className="text-blue-400">Urea 46%</span></h1>
-          <p className="text-lg text-slate-300 max-w-3xl mx-auto mb-8">Proveedor global de urea de alta calidad para fertilización agrícola e industria química. Despachos masivos a Europa y América.</p>
-          <button onClick={() => navigateTo('contacto')} className="bg-blue-600 text-white px-8 py-4 rounded-full font-bold hover:bg-blue-700 transition-all">Consultar Logística Urea</button>
-        </div>
-      </section>
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-            <img src="https://images.unsplash.com/photo-1586771107445-d3ca888129ff?w=800&h=600&fit=crop" className="rounded-3xl shadow-xl" alt="Urea Granules" />
-            <div>
-              <h2 className="text-3xl font-bold text-[#0A1628] mb-6">Capacidad de Suministro Industrial</h2>
-              <p className="text-slate-600 mb-6 leading-relaxed">Suministramos Urea Prilled y Granular 46% N con certificaciones SGS de origen. Gestionamos fletes marítimos y entrega en puerto destino (CIF).</p>
-              <div className="bg-blue-50 p-6 rounded-2xl border border-blue-100">
-                <h4 className="font-bold text-blue-900 mb-4 text-center uppercase tracking-wider text-sm">Especificaciones Estándar</h4>
-                <div className="grid grid-cols-2 gap-4">
-                  <div className="bg-white p-3 rounded-lg text-center"><p className="text-xs text-slate-500">Nitrógeno</p><p className="font-bold text-blue-600">Min. 46%</p></div>
-                  <div className="bg-white p-3 rounded-lg text-center"><p className="text-xs text-slate-500">Biuret</p><p className="font-bold text-blue-600">Max. 1%</p></div>
-                  <div className="bg-white p-3 rounded-lg text-center"><p className="text-xs text-slate-500">Humedad</p><p className="font-bold text-blue-600">Max. 0.5%</p></div>
-                  <div className="bg-white p-3 rounded-lg text-center"><p className="text-xs text-slate-500">Origen</p><p className="font-bold text-blue-600">Global</p></div>
+        </section>
+
+        {/* Content & FAQ */}
+        <section className="py-20 bg-white">
+          <div className="max-w-4xl mx-auto px-4">
+            <div className="prose prose-lg mb-16">
+              <p className="text-slate-600 leading-relaxed">
+                Nuestra operación de **compra de oro** está liderada por **Roberto Méndez**, experto con más de 20 años en el sector. Garantizamos **transparencia total** en el pesaje y análisis. Si también maneja otros metales, puede consultar nuestra sección de <button onClick={() => navigateTo('silver')} className="text-[#D4AF37] font-bold hover:underline">Compra de Plata</button>.
+              </p>
+            </div>
+
+            <h2 className="text-3xl font-bold text-[#0A1628] mb-8 text-center">Preguntas Frecuentes sobre Oro</h2>
+            <div className="space-y-4 mb-16">
+              {faqs.map((faq, i) => (
+                <div key={i} className="border border-slate-100 rounded-xl overflow-hidden">
+                  <button onClick={() => setOpenFaq(openFaq === i ? null : i)} className="w-full flex justify-between items-center p-5 text-left bg-slate-50 hover:bg-slate-100 transition-colors">
+                    <span className="font-semibold text-slate-800" dangerouslySetInnerHTML={{ __html: faq.q }}></span>
+                    {openFaq === i ? <ChevronUp className="text-[#D4AF37]" /> : <ChevronDown className="text-slate-400" />}
+                  </button>
+                  {openFaq === i && <div className="p-5 bg-white text-slate-600" dangerouslySetInnerHTML={{ __html: faq.a }}></div>}
                 </div>
+              ))}
+            </div>
+
+            {/* Author Mention */}
+            <div className="bg-slate-50 p-8 rounded-3xl border border-slate-200 flex flex-col md:flex-row items-center gap-6">
+              <div className="w-20 h-20 bg-[#0A1628] rounded-full flex items-center justify-center flex-shrink-0">
+                <User className="text-[#D4AF37] w-10 h-10" />
+              </div>
+              <div>
+                <p className="text-xs font-bold text-[#D4AF37] uppercase tracking-widest mb-1">Responsable del Servicio</p>
+                <h4 className="text-xl font-bold text-[#0A1628]">Roberto Méndez Vásquez</h4>
+                <p className="text-sm text-slate-600">Especialista en **Mercados de Metales Preciosos** con certificaciones internacionales. Supervisa personalmente cada protocolo de fundición.</p>
               </div>
             </div>
           </div>
-        </div>
-      </section>
-    </div>
-  );
+        </section>
+      </div>
+    );
+  };
 
   // ============================================
-  // PÁGINA: VENTA DE AZÚCAR
+  // PÁGINA: COMPRA DE PLATA (MEJORADA)
   // ============================================
-  const SugarPage = () => (
-    <div className="animate-fadeIn">
-      <section className="relative pt-32 pb-20 bg-[#0A1628] overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-amber-900/20 to-transparent"></div>
-        <div className="max-w-7xl mx-auto px-4 relative z-10 text-center">
-          <div className="inline-block mb-4 px-3 py-1 bg-amber-500/20 border border-amber-400/30 rounded-full">
-            <span className="text-amber-400 text-xs font-bold uppercase tracking-widest">Soft Commodities</span>
+  const SilverPage = () => {
+    const [openFaq, setOpenFaq] = useState(null);
+    const faqs = [
+      { q: "¿Qué **ley de plata** adquieren?", a: "Compramos desde **plata de mina** con baja ley hasta **plata fina .999** y granalla industrial." },
+      { q: "¿Cómo se fija el **precio diario**?", a: "Nos basamos en el fixing de la **London Bullion Market (LBMA)** con spreads competitivos según volumen." },
+      { q: "¿Realizan **recojo en planta**?", a: "Sí, disponemos de unidades blindadas para el **transporte seguro** desde su centro de operaciones o mina." },
+      { q: "¿Cuál es el tiempo de **liquidación**?", a: "Tras el análisis químico, la liquidación se realiza en un plazo máximo de **24 a 48 horas**." },
+      { q: "¿Compran plata en **joyería o chatarra**?", a: "Principalmente nos enfocamos en **plata industrial** y minera, pero evaluamos lotes de joyería según volumen." }
+    ];
+
+    return (
+      <div className="animate-fadeIn">
+        <section className="relative pt-32 pb-20 bg-[#0A1628] overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-to-br from-slate-400/10 to-transparent"></div>
+          <div className="max-w-7xl mx-auto px-4 relative z-10 text-center">
+            <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">Compra de <span className="text-slate-300">Plata Industrial</span></h1>
+            <p className="text-lg text-slate-300 max-w-3xl mx-auto mb-8">Soluciones de monetización inmediata para **productores de plata** en toda la región.</p>
+            <button onClick={() => navigateTo('contacto')} className="bg-slate-300 text-[#0A1628] px-8 py-4 rounded-full font-bold hover:bg-white transition-all">Consultar Tabla de Precios</button>
           </div>
-          <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">Azúcar <span className="text-amber-400">ICUMSA 45</span></h1>
-          <p className="text-lg text-slate-300 max-w-3xl mx-auto mb-8">Exportación directa de azúcar refinada de origen brasileño y mexicano. Calidad garantizada bajo normas internacionales de consumo.</p>
-          <button onClick={() => navigateTo('contacto')} className="bg-amber-500 text-[#0A1628] px-8 py-4 rounded-full font-bold hover:bg-amber-600 transition-all">Solicitar Cotización Azúcar</button>
-        </div>
-      </section>
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
-            {[
-              { title: 'Certificación SGS', desc: 'Control de calidad en puerto de carga.', icon: <Award className="w-10 h-10 mx-auto text-amber-500" /> },
-              { title: 'Logística Global', desc: 'Despachos a Europa, México y Medio Oriente.', icon: <Globe className="w-10 h-10 mx-auto text-amber-500" /> },
-              { title: 'Suministro Continuo', desc: 'Capacidad de entrega mensual de gran volumen.', icon: <Clock className="w-10 h-10 mx-auto text-amber-500" /> }
-            ].map((item, i) => (
-              <div key={i} className="p-8 border border-slate-100 rounded-3xl hover:shadow-lg transition-all">
-                <div className="mb-4">{item.icon}</div>
-                <h3 className="font-bold text-lg mb-2">{item.title}</h3>
-                <p className="text-sm text-slate-600">{item.desc}</p>
+        </section>
+        <section className="py-20 bg-white">
+          <div className="max-w-4xl mx-auto px-4">
+            <p className="text-slate-600 mb-12 text-center">
+              Bajo la dirección de **Roberto Méndez**, aplicamos tecnología de punta en la **valoración de metales**. Para diversificar su inversión, visite nuestra página de <button onClick={() => navigateTo('sugar')} className="text-amber-600 font-bold hover:underline">Venta de Azúcar</button>.
+            </p>
+
+            <h2 className="text-3xl font-bold text-[#0A1628] mb-8 text-center">Preguntas sobre Plata</h2>
+            <div className="space-y-4 mb-16">
+              {faqs.map((faq, i) => (
+                <div key={i} className="border border-slate-100 rounded-xl overflow-hidden">
+                  <button onClick={() => setOpenFaq(openFaq === i ? null : i)} className="w-full flex justify-between items-center p-5 text-left bg-slate-50 hover:bg-slate-100 transition-colors">
+                    <span className="font-semibold text-slate-800" dangerouslySetInnerHTML={{ __html: faq.q }}></span>
+                    {openFaq === i ? <ChevronUp className="text-slate-400" /> : <ChevronDown className="text-slate-400" />}
+                  </button>
+                  {openFaq === i && <div className="p-5 bg-white text-slate-600" dangerouslySetInnerHTML={{ __html: faq.a }}></div>}
+                </div>
+              ))}
+            </div>
+
+            <div className="bg-slate-50 p-8 rounded-3xl border border-slate-200 flex flex-col md:flex-row items-center gap-6 text-center md:text-left">
+              <div className="w-20 h-20 bg-slate-300 rounded-full flex items-center justify-center flex-shrink-0">
+                <User className="text-[#0A1628] w-10 h-10" />
               </div>
-            ))}
+              <div>
+                <h4 className="text-xl font-bold text-[#0A1628]">Roberto Méndez • Experto Senior</h4>
+                <p className="text-sm text-slate-600">Lidera el área de **commodities minerales**, asegurando que cada cliente reciba el valor real de su material mediante **procesos certificados**.</p>
+              </div>
+            </div>
           </div>
-        </div>
-      </section>
-    </div>
-  );
+        </section>
+      </div>
+    );
+  };
+
+  // ============================================
+  // PÁGINA: VENTA DE UREA (MEJORADA)
+  // ============================================
+  const UreaPage = () => {
+    const [openFaq, setOpenFaq] = useState(null);
+    const faqs = [
+      { q: "¿Cuál es el **origen de la urea**?", a: "Suministramos principalmente desde **grandes productores globales** con capacidad logística internacional." },
+      { q: "¿Manejan entregas **CIF o FOB**?", a: "Gestionamos ambas modalidades, especializándonos en **entregas CIF** en cualquier puerto principal del mundo." },
+      { q: "¿Cuál es el **pedido mínimo** (MOQ)?", a: "El pedido mínimo es de **25 toneladas** (un contenedor), optimizando costos en embarques de **12,500 TM**." },
+      { q: "¿Qué **garantías de calidad** ofrecen?", a: "Cada lote es inspeccionado por **SGS o Intertek** en el puerto de carga, garantizando un **nitrógeno mínimo del 46%**." },
+      { q: "¿Cuáles son las **condiciones de pago**?", a: "Aceptamos **Cartas de Crédito (SBLC / DLC)** irrevocables y transferencias bancarias verificadas." }
+    ];
+
+    return (
+      <div className="animate-fadeIn">
+        <section className="relative pt-32 pb-20 bg-[#0A1628] overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-to-br from-blue-900/20 to-transparent"></div>
+          <div className="max-w-7xl mx-auto px-4 relative z-10 text-center">
+            <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">Suministro de <span className="text-blue-400">Urea 46%</span></h1>
+            <p className="text-lg text-slate-300 max-w-3xl mx-auto mb-8">Logística eficiente para el **sector agroindustrial** global bajo la supervisión de expertos.</p>
+            <button onClick={() => navigateTo('contacto')} className="bg-blue-600 text-white px-8 py-4 rounded-full font-bold hover:bg-blue-700 transition-all">Solicitar Proforma de Urea</button>
+          </div>
+        </section>
+        <section className="py-20 bg-white">
+          <div className="max-w-4xl mx-auto px-4">
+            <p className="text-slate-600 mb-12 text-center">
+              Nuestro director **Roberto Méndez** coordina las alianzas con los principales puertos. Para soluciones de fertilización orgánica, vea nuestra <button onClick={() => navigateTo('sugar')} className="text-amber-600 font-bold hover:underline">Venta de Azúcar</button>.
+            </p>
+
+            <h2 className="text-3xl font-bold text-[#0A1628] mb-8 text-center">FAQ: Urea 46%</h2>
+            <div className="space-y-4 mb-16">
+              {faqs.map((faq, i) => (
+                <div key={i} className="border border-slate-100 rounded-xl overflow-hidden">
+                  <button onClick={() => setOpenFaq(openFaq === i ? null : i)} className="w-full flex justify-between items-center p-5 text-left bg-blue-50 hover:bg-blue-100 transition-colors">
+                    <span className="font-semibold text-slate-800" dangerouslySetInnerHTML={{ __html: faq.q }}></span>
+                    {openFaq === i ? <ChevronUp className="text-blue-600" /> : <ChevronDown className="text-blue-400" />}
+                  </button>
+                  {openFaq === i && <div className="p-5 bg-white text-slate-600" dangerouslySetInnerHTML={{ __html: faq.a }}></div>}
+                </div>
+              ))}
+            </div>
+
+            <div className="bg-blue-50 p-8 rounded-3xl border border-blue-100 flex flex-col md:flex-row items-center gap-6">
+              <div className="w-20 h-20 bg-[#0A1628] rounded-full flex items-center justify-center flex-shrink-0">
+                <User className="text-blue-400 w-10 h-10" />
+              </div>
+              <div>
+                <h4 className="text-xl font-bold text-[#0A1628]">Roberto Méndez • Gestión Logística</h4>
+                <p className="text-sm text-slate-600">Asegura la **continuidad del suministro** y el cumplimiento de los tiempos de entrega internacionales para **commodities agrícolas**.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    );
+  };
+
+  // ============================================
+  // PÁGINA: VENTA DE AZÚCAR (MEJORADA)
+  // ============================================
+  const SugarPage = () => {
+    const [openFaq, setOpenFaq] = useState(null);
+    const faqs = [
+      { q: "¿Venden azúcar **ICUMSA 45 de Brasil**?", a: "Sí, es nuestro producto estrella con los más altos estándares de **refinación y blancura**." },
+      { q: "¿Cuál es el **empaque estándar**?", a: "Despachamos en sacos de **50kg** de polipropileno con liner interno, aptos para exportación marítima." },
+      { q: "¿Cómo garantizan la **carga en puerto**?", a: "Mediante inspección física de **SGS** y certificados fitosanitarios obligatorios antes del zarpe." },
+      { q: "¿Qué **capacidad mensual** tienen?", a: "Podemos gestionar desde contenedores individuales hasta **50,000 TM mensuales** bajo contrato." },
+      { q: "¿Cuál es el **tiempo de tránsito** a Europa?", a: "Desde puertos de Brasil o México, el tiempo promedio es de **18 a 25 días** calendario." }
+    ];
+
+    return (
+      <div className="animate-fadeIn">
+        <section className="relative pt-32 pb-20 bg-[#0A1628] overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-to-br from-amber-900/20 to-transparent"></div>
+          <div className="max-w-7xl mx-auto px-4 relative z-10 text-center">
+            <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">Azúcar <span className="text-amber-400">ICUMSA 45</span></h1>
+            <p className="text-lg text-slate-300 max-w-3xl mx-auto mb-8">Exportación de **azúcar refinada** con estándares de consumo humano internacional.</p>
+            <button onClick={() => navigateTo('contacto')} className="bg-amber-500 text-[#0A1628] px-8 py-4 rounded-full font-bold hover:bg-amber-600 transition-all">Solicitar Quote de Azúcar</button>
+          </div>
+        </section>
+        <section className="py-20 bg-white">
+          <div className="max-w-4xl mx-auto px-4">
+            <p className="text-slate-600 mb-12 text-center">
+              **Roberto Méndez** supervisa la cadena de suministro para asegurar la pureza del producto. Si busca insumos industriales, explore nuestra <button onClick={() => navigateTo('urea')} className="text-blue-600 font-bold hover:underline">Venta de Urea</button>.
+            </p>
+
+            <h2 className="text-3xl font-bold text-[#0A1628] mb-8 text-center">Preguntas sobre Azúcar</h2>
+            <div className="space-y-4 mb-16">
+              {faqs.map((faq, i) => (
+                <div key={i} className="border border-slate-100 rounded-xl overflow-hidden">
+                  <button onClick={() => setOpenFaq(openFaq === i ? null : i)} className="w-full flex justify-between items-center p-5 text-left bg-amber-50 hover:bg-amber-100 transition-colors">
+                    <span className="font-semibold text-slate-800" dangerouslySetInnerHTML={{ __html: faq.q }}></span>
+                    {openFaq === i ? <ChevronUp className="text-amber-600" /> : <ChevronDown className="text-amber-500" />}
+                  </button>
+                  {openFaq === i && <div className="p-5 bg-white text-slate-600" dangerouslySetInnerHTML={{ __html: faq.a }}></div>}
+                </div>
+              ))}
+            </div>
+
+            <div className="bg-amber-50 p-8 rounded-3xl border border-amber-100 flex flex-col md:flex-row items-center gap-6">
+              <div className="w-20 h-20 bg-[#0A1628] rounded-full flex items-center justify-center flex-shrink-0">
+                <User className="text-amber-400 w-10 h-10" />
+              </div>
+              <div>
+                <h4 className="text-xl font-bold text-[#0A1628]">Roberto Méndez • Comercio Exterior</h4>
+                <p className="text-sm text-slate-600">Garantiza el cumplimiento de las **normas sanitarias** y de calidad alimentaria para cada despacho de **azúcar refinada**.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    );
+  };
 
   // --- Sub-componente Header con Dropdown ---
   const Header = () => {
