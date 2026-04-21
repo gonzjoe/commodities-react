@@ -51,7 +51,7 @@ const App = () => {
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex space-x-8">
-            {['Inicio', 'Servicios', 'Nosotros', 'Contacto'].map((item) => {
+            {['Inicio', 'Servicios', 'Oro', 'Nosotros', 'Contacto'].map((item) => {
               const pageKey = item.toLowerCase();
               const isActive = currentPage === pageKey || (item === 'Nosotros' && currentPage === 'nosotros');
               return (
@@ -96,7 +96,7 @@ const App = () => {
       {mobileMenuOpen && (
         <div className="md:hidden bg-white border-t border-gray-100">
           <div className="px-4 pt-2 pb-6 space-y-2">
-            {['Inicio', 'Servicios', 'Nosotros', 'Contacto'].map((item) => (
+            {['Inicio', 'Servicios', 'Oro', 'Nosotros', 'Contacto'].map((item) => (
               <button
                 key={item}
                 onClick={() => navigateTo(item.toLowerCase() === 'nosotros' ? 'nosotros' : item.toLowerCase())}
@@ -145,7 +145,7 @@ const App = () => {
           <div>
             <h3 className="text-amber-400 font-semibold mb-4" style={{fontFamily: 'Inter, sans-serif'}}>Navegación</h3>
             <ul className="space-y-2">
-              {['Inicio', 'Servicios', 'Nosotros', 'Contacto', 'FAQ'].map((link) => (
+              {['Inicio', 'Servicios', 'Oro', 'Nosotros', 'Contacto', 'FAQ'].map((link) => (
                 <li key={link}>
                   <button
                     onClick={() => navigateTo(link.toLowerCase() === 'faq' ? 'faq' : link.toLowerCase() === 'nosotros' ? 'nosotros' : link.toLowerCase())}
@@ -163,7 +163,9 @@ const App = () => {
           <div>
             <h3 className="text-amber-400 font-semibold mb-4" style={{fontFamily: 'Inter, sans-serif'}}>Servicios</h3>
             <ul className="space-y-2">
-              <li className="text-slate-400 text-sm" style={{fontFamily: 'Open Sans, sans-serif'}}>Compra de Oro</li>
+              <li>
+                <button onClick={() => navigateTo('gold')} className="text-slate-400 hover:text-amber-400 text-sm transition-colors">Compra de Oro</button>
+              </li>
               <li className="text-slate-400 text-sm" style={{fontFamily: 'Open Sans, sans-serif'}}>Compra de Plata</li>
               <li className="text-slate-400 text-sm" style={{fontFamily: 'Open Sans, sans-serif'}}>Venta de Urea</li>
               <li className="text-slate-400 text-sm" style={{fontFamily: 'Open Sans, sans-serif'}}>Venta de Azúcar</li>
@@ -303,28 +305,32 @@ const App = () => {
                 title: 'Compra de Oro',
                 desc: 'Adquisición en Perú, Bolivia, Venezuela y Ecuador',
                 countries: '🇵🇪 🇧🇴 🇻🇪 🇪🇨',
-                cta: 'Ver Países'
+                cta: 'Ver Protocolo',
+                target: 'gold'
               },
               {
                 icon: '☀️',
                 title: 'Compra de Plata',
                 desc: 'Evaluación profesional y pagos inmediatos',
                 countries: '🇵🇪 🇧🇴 🇻🇪 🇪🇨',
-                cta: 'Ver Países'
+                cta: 'Ver Países',
+                target: 'servicios'
               },
               {
                 icon: '📦',
                 title: 'Venta de Urea',
                 desc: 'Distribución a Europa, México y Medio Oriente',
                 countries: '🇪🇺 🇲🇽 🇸🇦',
-                cta: 'Consultar Stock'
+                cta: 'Consultar Stock',
+                target: 'servicios'
               },
               {
                 icon: '🍬',
                 title: 'Venta de Azúcar',
                 desc: 'Azúcar ICUMSA 45 de Brasil y México',
                 countries: '🇪🇺 🇲🇽 🇦🇪',
-                cta: 'Solicitar Precio'
+                cta: 'Solicitar Precio',
+                target: 'servicios'
               }
             ].map((service, index) => (
               <div key={index} className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 border-t-4 border-amber-500 group">
@@ -333,7 +339,7 @@ const App = () => {
                 <p className="text-slate-600 mb-4 text-sm" style={{fontFamily: 'Open Sans, sans-serif'}}>{service.desc}</p>
                 <div className="text-2xl mb-4">{service.countries}</div>
                 <button
-                  onClick={() => navigateTo('servicios')}
+                  onClick={() => navigateTo(service.target)}
                   className="text-amber-600 font-semibold text-sm hover:text-amber-700 flex items-center group-hover:translate-x-2 transition-transform"
                 >
                   {service.cta} →
@@ -465,12 +471,20 @@ const App = () => {
                   </div>
                 </div>
 
-                <button
-                  onClick={() => navigateTo('contacto')}
-                  className="bg-amber-500 hover:bg-amber-600 text-slate-900 px-6 py-3 rounded-full font-semibold transition-colors"
-                >
-                  Consultar Precio por País
-                </button>
+                <div className="flex flex-col sm:flex-row gap-4 mt-8">
+                  <button
+                    onClick={() => navigateTo('gold')}
+                    className="bg-amber-500 hover:bg-amber-600 text-slate-900 px-8 py-3 rounded-full font-bold transition-all transform hover:scale-105 shadow-lg"
+                  >
+                    Ver Detalles del Oro
+                  </button>
+                  <button
+                    onClick={() => navigateTo('contacto')}
+                    className="bg-transparent border-2 border-white/20 hover:border-amber-500 text-white px-8 py-3 rounded-full font-semibold transition-all"
+                  >
+                    Consultar Precios
+                  </button>
+                </div>
               </div>
 
               <div className="lg:w-1/2">
@@ -1089,12 +1103,249 @@ const App = () => {
     );
   };
 
+  // ============================================
+  // PÁGINA: COMPRA DE ORO (ESPECÍFICA)
+  // ============================================
+  const GoldPage = () => {
+    const [weight, setWeight] = useState('');
+    const [purity, setPurity] = useState('0.850');
+    const marketPrice = 75.40;
+
+    const fineGrams = (parseFloat(weight) || 0) * parseFloat(purity);
+    const totalValue = fineGrams * marketPrice;
+
+    return (
+      <div className="animate-fadeIn">
+        {/* Hero Gold */}
+        <section className="relative pt-32 pb-20 bg-slate-900 overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-to-br from-amber-900/20 to-transparent"></div>
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+              <div>
+                <div className="inline-block mb-4 px-3 py-1 bg-amber-500/20 border border-amber-500/30 rounded-full">
+                  <span className="text-amber-400 text-xs font-bold uppercase tracking-widest">Estándares LBMA & OCDE</span>
+                </div>
+                <h1 className="text-4xl md:text-6xl font-bold text-white mb-6" style={{fontFamily: 'Inter, sans-serif'}}>
+                  Compra de Oro <br />
+                  <span className="text-amber-500">Directo de Mina</span>
+                </h1>
+                <p className="text-lg text-slate-300 mb-8 leading-relaxed">
+                  Somos compradores directos de oro en formato doré, barras y polvo. 
+                  Operamos con total transparencia en Perú, Bolivia, Venezuela y Ecuador, 
+                  garantizando el mejor precio basado en el mercado de Londres.
+                </p>
+                <div className="flex flex-wrap gap-4">
+                  <div className="flex items-center text-white/80 bg-white/5 px-4 py-2 rounded-lg border border-white/10">
+                    <CheckCircle className="w-5 h-5 text-amber-500 mr-2" />
+                    <span>Precio LBMA Spot</span>
+                  </div>
+                  <div className="flex items-center text-white/80 bg-white/5 px-4 py-2 rounded-lg border border-white/10">
+                    <Shield className="w-5 h-5 text-amber-500 mr-2" />
+                    <span>Protocolo OCDE</span>
+                  </div>
+                </div>
+              </div>
+              <div className="relative">
+                <img 
+                  src="https://images.unsplash.com/photo-1610375461246-83df859d849d?w=800&h=600&fit=crop" 
+                  alt="Lingotes de Oro" 
+                  className="rounded-3xl shadow-2xl border border-amber-500/20"
+                />
+                <div className="absolute -bottom-6 -left-6 bg-white p-6 rounded-2xl shadow-xl hidden md:block">
+                  <div className="text-amber-600 font-bold text-3xl">98%</div>
+                  <div className="text-slate-500 text-xs font-semibold uppercase tracking-wider">De Valor de Mercado</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Calculator Section */}
+        <section className="py-20 bg-white">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+              <div>
+                <h2 className="text-3xl font-bold text-slate-900 mb-6" style={{fontFamily: 'Inter, sans-serif'}}>
+                  Estime el Valor de su <span className="text-amber-600">Producción</span>
+                </h2>
+                <p className="text-slate-600 mb-8 leading-relaxed">
+                  Utilice nuestra calculadora para obtener una valoración referencial inmediata. 
+                  Basamos nuestros cálculos en el precio actualizado del oro fino.
+                </p>
+                <ul className="space-y-4">
+                  {[
+                    'Cálculo basado en precio real LBMA',
+                    'Ajuste por pureza de material',
+                    'Sin comisiones ocultas',
+                    'Asesoría técnica inmediata'
+                  ].map((item, i) => (
+                    <li key={i} className="flex items-center text-slate-700">
+                      <div className="w-6 h-6 bg-amber-100 rounded-full flex items-center justify-center mr-3">
+                        <span className="text-amber-600 text-xs font-bold">✓</span>
+                      </div>
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <div className="bg-slate-50 p-8 rounded-3xl border border-slate-200 shadow-inner">
+                <div className="space-y-6">
+                  <div>
+                    <label className="block text-sm font-semibold text-slate-700 mb-2">Peso Bruto (Gramos)</label>
+                    <input 
+                      type="number" 
+                      className="w-full px-4 py-4 rounded-xl border border-slate-300 focus:ring-2 focus:ring-amber-500 outline-none transition-all text-lg font-bold"
+                      placeholder="Ej: 500"
+                      value={weight}
+                      onChange={(e) => setWeight(e.target.value)}
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-semibold text-slate-700 mb-2">Pureza Estimada</label>
+                    <select 
+                      className="w-full px-4 py-4 rounded-xl border border-slate-300 focus:ring-2 focus:ring-amber-500 outline-none transition-all bg-white"
+                      value={purity}
+                      onChange={(e) => setPurity(e.target.value)}
+                    >
+                      <option value="0.999">Oro Fino (.999)</option>
+                      <option value="0.950">Oro Refinado (.950)</option>
+                      <option value="0.850">Doré Estándar (.850)</option>
+                      <option value="0.750">Doré Bajo (.750)</option>
+                      <option value="0.500">Material de Mina (.500)</option>
+                    </select>
+                  </div>
+
+                  <div className="pt-6 border-t border-slate-200 space-y-4">
+                    <div className="flex justify-between items-center text-slate-600">
+                      <span>Gramos Finos Estimados:</span>
+                      <span className="font-bold text-slate-900">{fineGrams.toFixed(2)}g</span>
+                    </div>
+                    <div className="bg-amber-100 p-6 rounded-2xl text-center">
+                      <p className="text-amber-800 text-xs font-bold uppercase tracking-widest mb-1">Valor Total Estimado</p>
+                      <p className="text-amber-600 text-4xl font-black" style={{fontFamily: 'Inter, sans-serif'}}>
+                        ${totalValue.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})} <span className="text-xl">USD</span>
+                      </p>
+                    </div>
+                  </div>
+                  <button 
+                    onClick={() => navigateTo('contacto')}
+                    className="w-full bg-slate-900 text-white py-4 rounded-xl font-bold hover:bg-amber-600 transition-colors shadow-lg"
+                  >
+                    Garantizar Este Precio
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Process Steps */}
+        <section className="py-20 bg-slate-50">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-16">
+              <h2 className="text-3xl font-bold text-slate-900 mb-4">Nuestro Protocolo de Adquisición</h2>
+              <p className="text-slate-600 max-w-2xl mx-auto">Seguimos un proceso riguroso de 4 pasos para garantizar seguridad y cumplimiento.</p>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+              {[
+                { n: '01', title: 'Contacto', desc: 'Indíquenos volumen y ley de su material.' },
+                { n: '02', title: 'Evaluación', desc: 'Análisis técnico y propuesta comercial.' },
+                { n: '03', title: 'Logística', desc: 'Recogida segura y transporte a refinería.' },
+                { n: '04', title: 'Pago', desc: 'Transferencia inmediata tras ensayo final.' }
+              ].map((step, i) => (
+                <div key={i} className="bg-white p-8 rounded-2xl shadow-md border-b-4 border-amber-500 relative overflow-hidden group hover:-translate-y-2 transition-all">
+                  <div className="text-5xl font-black text-amber-50 absolute -top-2 -right-2 transition-colors group-hover:text-amber-100">{step.n}</div>
+                  <h3 className="font-bold text-slate-900 mb-2 relative z-10">{step.title}</h3>
+                  <p className="text-slate-600 text-sm relative z-10">{step.desc}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Formats Section */}
+        <section className="py-20 bg-white">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-16">
+              <h2 className="text-3xl font-bold text-slate-900 mb-4">Formatos que Adquirimos</h2>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              {[
+                { 
+                  icon: '⛏️', 
+                  title: 'Doré de Mina', 
+                  desc: 'Lingotes resultantes de fundición directa. Pureza entre 40% y 95%.',
+                  img: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&h=400&fit=crop'
+                },
+                { 
+                  icon: '🏆', 
+                  title: 'Barras Refinadas', 
+                  desc: 'Barras con certificación de pureza 995 o 999.9 ppm.',
+                  img: 'https://images.unsplash.com/photo-1610375461246-83df859d849d?w=600&h=400&fit=crop'
+                },
+                { 
+                  icon: '✨', 
+                  title: 'Polvo de Oro', 
+                  desc: 'Material procedente de minería aluvial con granulometría variable.',
+                  img: 'https://images.unsplash.com/photo-1569017388730-020b5f80a004?w=600&h=400&fit=crop'
+                }
+              ].map((format, i) => (
+                <div key={i} className="bg-white rounded-3xl overflow-hidden shadow-lg border border-slate-100 hover:shadow-2xl transition-all">
+                  <img src={format.img} alt={format.title} className="h-48 w-full object-cover" />
+                  <div className="p-8">
+                    <div className="text-3xl mb-4">{format.icon}</div>
+                    <h3 className="text-xl font-bold text-slate-900 mb-2">{format.title}</h3>
+                    <p className="text-slate-600 text-sm">{format.desc}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* FAQ Gold */}
+        <section className="py-20 bg-slate-900 text-white">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 className="text-3xl font-bold text-center mb-12">Preguntas sobre la Venta de Oro</h2>
+            <div className="space-y-6">
+              {[
+                { q: '¿Cuál es el volumen mínimo?', a: 'Adquirimos desde 1kg de oro fino en adelante.' },
+                { q: '¿Cómo garantizan el pago?', a: 'Mediante transferencia bancaria internacional tras el ensayo en refinería certificada.' },
+                { q: '¿Operan legalmente en Venezuela?', a: 'Sí, trabajamos bajo el estricto cumplimiento de las normativas internacionales y locales.' }
+              ].map((faq, i) => (
+                <div key={i} className="border-b border-white/10 pb-6">
+                  <h3 className="text-amber-400 font-bold mb-2">¿{faq.q}</h3>
+                  <p className="text-slate-400 text-sm">{faq.a}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* CTA Gold */}
+        <section className="py-20 bg-amber-500">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 className="text-3xl md:text-5xl font-black text-slate-900 mb-6">¿Listo para vender su producción?</h2>
+            <p className="text-slate-900/80 text-xl mb-10 max-w-2xl mx-auto font-medium">Contáctenos ahora y obtenga la mejor cotización del mercado hoy mismo.</p>
+            <button 
+              onClick={() => navigateTo('contacto')}
+              className="bg-slate-900 text-white px-10 py-5 rounded-full font-bold text-xl hover:scale-105 transition-all shadow-2xl"
+            >
+              Hablar con un Especialista
+            </button>
+          </div>
+        </section>
+      </div>
+    );
+  };
+
   // Render Principal
   return (
     <div className="min-h-screen bg-white">
       {/* Google Fonts */}
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Open+Sans:wght@400;500;600&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Open+Sans:wght@400;500;600&display=swap');
 
         .animate-fadeIn {
           animation: fadeIn 0.5s ease-in;
@@ -1114,6 +1365,7 @@ const App = () => {
         {currentPage === 'nosotros' && <AboutPage />}
         {currentPage === 'faq' && <FAQPage />}
         {currentPage === 'contacto' && <ContactPage />}
+        {currentPage === 'gold' && <GoldPage />}
       </main>
 
       <Footer />
