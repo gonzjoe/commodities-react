@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- SEO Meta Tags -->
+    <title>Global Commodities Trading | Oro, Plata, Urea y Azúcar</title>
+    <meta name="description" content="Líderes en comercio internacional de metales preciosos y commodities. Compra de oro y plata en Latinoamérica, venta de urea y azúcar a Europa y Medio Oriente." />
+    <meta name="keywords" content="compra oro, compra plata, venta urea, venta azúcar, commodities, trading internacional, metales preciosos" />
+    <meta name="author" content="Global Commodities Trading" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://globalcommodities.com" />
+    <meta property="og:title" content="Global Commodities Trading" />
+    <meta property="og:description" content="Comercio internacional de oro, plata, urea y azúcar con los más altos estándares de calidad." />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://globalcommodities.com" />
+    <meta property="twitter:title" content="Global Commodities Trading" />
+    <meta property="twitter:description" content="Comercio internacional de oro, plata, urea y azúcar con los más altos estándares de calidad." />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700;800&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Theme Color -->
+    <meta name="theme-color" content="#0A1628" />
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://globalcommodities.com" />
+
+    <style>
+      /* Critical CSS for faster loading */
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: 'Inter', sans-serif;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+
+      /* Loading animation */
+      #root:empty::before {
+        content: '';
+        display: block;
+        width: 50px;
+        height: 50px;
+        border: 3px solid #D4AF37;
+        border-top-color: transparent;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+
+      @keyframes spin {
+        to { transform: translate(-50%, -50%) rotate(360deg); }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+
+    <!-- Schema.org JSON-LD for SEO -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Global Commodities Trading",
+      "url": "https://globalcommodities.com",
+      "logo": "https://globalcommodities.com/logo.png",
+      "description": "Líderes en comercio internacional de metales preciosos y commodities agrícolas.",
+      "foundingDate": "2010",
+      "founder": {
+        "@type": "Person",
+        "name": "Roberto Méndez"
+      },
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+1-234-567-890",
+        "contactType": "sales",
+        "availableLanguage": ["Spanish", "English"]
+      },
+      "sameAs": [
+        "https://linkedin.com/company/globalcommodities",
+        "https://twitter.com/globalcommodities"
+      ]
+    }
+    </script>
+  </body>
+</html>
